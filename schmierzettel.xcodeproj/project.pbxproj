@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		9A7BF9052C18E93B000B5F4B /* schmierzettelApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7BF9042C18E93B000B5F4B /* schmierzettelApp.swift */; };
 		9A7BF9072C18E93B000B5F4B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7BF9062C18E93B000B5F4B /* ContentView.swift */; };
-		9A7BF9092C18E93B000B5F4B /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7BF9082C18E93B000B5F4B /* Item.swift */; };
 		9A7BF90B2C18E93C000B5F4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A7BF90A2C18E93C000B5F4B /* Assets.xcassets */; };
 		9A7BF90E2C18E93C000B5F4B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A7BF90D2C18E93C000B5F4B /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -18,7 +17,6 @@
 		9A7BF9012C18E93B000B5F4B /* schmierzettel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = schmierzettel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A7BF9042C18E93B000B5F4B /* schmierzettelApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = schmierzettelApp.swift; sourceTree = "<group>"; };
 		9A7BF9062C18E93B000B5F4B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		9A7BF9082C18E93B000B5F4B /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		9A7BF90A2C18E93C000B5F4B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9A7BF90D2C18E93C000B5F4B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -55,7 +53,6 @@
 			children = (
 				9A7BF9042C18E93B000B5F4B /* schmierzettelApp.swift */,
 				9A7BF9062C18E93B000B5F4B /* ContentView.swift */,
-				9A7BF9082C18E93B000B5F4B /* Item.swift */,
 				9A7BF90A2C18E93C000B5F4B /* Assets.xcassets */,
 				9A7BF90C2C18E93C000B5F4B /* Preview Content */,
 			);
@@ -141,7 +138,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A7BF9072C18E93B000B5F4B /* ContentView.swift in Sources */,
-				9A7BF9092C18E93B000B5F4B /* Item.swift in Sources */,
 				9A7BF9052C18E93B000B5F4B /* schmierzettelApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -276,14 +272,17 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"schmierzettel/Preview Content\"";
-				DEVELOPMENT_TEAM = RJTX7CK9KW;
+				DEVELOPMENT_TEAM = NG5K744DS6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Schmierzettel;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -305,14 +304,17 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"schmierzettel/Preview Content\"";
-				DEVELOPMENT_TEAM = RJTX7CK9KW;
+				DEVELOPMENT_TEAM = NG5K744DS6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Schmierzettel;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

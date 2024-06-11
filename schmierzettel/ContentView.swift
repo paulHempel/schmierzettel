@@ -7,55 +7,58 @@
 
 import SwiftUI
 import SwiftData
+import Foundation
 
-struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
+let defaults = UserDefaults.standard
+let pasteboard = UIPasteboard.general
+
+struct ContentView: View {    
+    @State var textEditorHeight : CGFloat = 20
+    
+    @State private var showingDeleteAlert = false
+    @State private var content: String = (defaults.string(forKey: "content") ?? "Tap anywhere to start typing...")
 
     var body: some View {
-        NavigationSplitView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
-                    }
-                }
-                .onDelete(perform: deleteItems)
-            }
+        NavigationView {
+                TextEditor(text: $content)
+                    .frame(minHeight: 50)
+//                    .fixedSize(horizontal: false, vertical: true)
+                    .border(.clear)
+                    .onChange(of: content) {
+                        defaults.set(content, forKey: "content") }
+                    .contentMargins(.horizontal, 12.0)
+                
+            .onPreferenceChange(ViewHeightKey.self) { textEditorHeight = $0 }
+            .navigationBarTitle(Text("Schmierzettel"))
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
+                Button("Delete note",
+                       systemImage: "trash",
+                       role: .destructive) {
+                    showingDeleteAlert = true
                 }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
+               .alert("Are you sure to delete all your notes? You won't be able to recover them.", isPresented: $showingDeleteAlert) {
+                          Button("Cancel", role: .cancel) { }
+                          Button("Delete Note", role: .destructive) { 
+                              content = "Tap anywhere to start typing..."
+                              defaults.set(content, forKey: "content")
+                          }
                 }
-            }
-        } detail: {
-            Text("Select an item")
-        }
-    }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
+                Button("Copy all", systemImage: "doc.on.doc") {
+                    pasteboard.string = content
+                }
             }
         }
     }
 }
 
+struct ViewHeightKey: PreferenceKey {
+    static var defaultValue: CGFloat { 0 }
+    static func reduce(value: inout Value, nextValue: () -> Value) {
+        value = value + nextValue()
+    }
+}
+
 #Preview {
     ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
 }
