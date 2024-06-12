@@ -15,12 +15,14 @@ let pasteboard = UIPasteboard.general
 struct ContentView: View {    
     @State var textEditorHeight : CGFloat = 20
     
+    @FocusState private var nameIsFocused: Bool
     @State private var showingDeleteAlert = false
     @State private var content: String = (defaults.string(forKey: "content") ?? "Tap anywhere to start typing...")
 
     var body: some View {
         NavigationView {
                 TextEditor(text: $content)
+                .focused($nameIsFocused)
                     .frame(minHeight: 50)
 //                    .fixedSize(horizontal: false, vertical: true)
                     .border(.clear)
@@ -31,7 +33,12 @@ struct ContentView: View {
             .onPreferenceChange(ViewHeightKey.self) { textEditorHeight = $0 }
             .navigationBarTitle(Text("Schmierzettel"))
             .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
+            .toolbarTitleMenu {
+//                currently broken in this position
+//                ShareLink("Export note...", item: content)
+                Button("Copy all", systemImage: "doc.on.doc") {
+                    pasteboard.string = content
+                }
                 Button("Delete note",
                        systemImage: "trash",
                        role: .destructive) {
@@ -44,8 +51,11 @@ struct ContentView: View {
                               defaults.set(content, forKey: "content")
                           }
                 }
-                Button("Copy all", systemImage: "doc.on.doc") {
-                    pasteboard.string = content
+            }
+            .toolbar {
+                Button("Hide Keyboard",
+                       systemImage: "keyboard") {
+                    nameIsFocused = !nameIsFocused
                 }
             }
         }
